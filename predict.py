@@ -1,4 +1,4 @@
-"""Generate the fixed v38 prediction from prepared statistics and official controls."""
+"""Generate AtlasShift predictions from source statistics and destination controls."""
 
 import argparse
 from pathlib import Path

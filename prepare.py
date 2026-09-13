@@ -1,4 +1,4 @@
-"""Download public inputs and prepare the five v38 source statistics."""
+"""Download public inputs and prepare source statistics for AtlasShift."""
 
 import argparse
 import gzip
