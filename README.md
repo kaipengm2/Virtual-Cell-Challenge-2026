@@ -4,7 +4,7 @@
 
 Historical result on September 10, 2026; leaderboard ranks change over time.
 
-**A simple atlas-based transfer method.**
+**A simple method for transferring perturbation responses across cell atlases.**
 
 AtlasShift predicts single-cell CRISPRi perturbation responses for the [Arc Institute Virtual Cell Challenge 2026 (VCC 2026)](https://virtualcellchallenge.org/) using a weighted combination of measured responses from five public cell atlases.
 
