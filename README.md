@@ -1,8 +1,6 @@
 # Virtual Cell Challenge 2026 — AtlasShift
 
-**Public Leaderboard Top 100 · Rank #82 · Score 0.1545618019**
-
-Historical result on September 10, 2026; leaderboard ranks change over time.
+**Public Leaderboard Top 100 · Rank #82 · Score 0.1545618019 (September 10, 2026)**
 
 **A simple method for transferring perturbation responses across cell atlases.**
 
