@@ -1,10 +1,9 @@
-# VCC 2026: Simple Atlas Transfer
+# A Simple Atlas Transfer Method
 
-**Public Leaderboard Top 100 · Rank #82 · Score 0.1545618019 (September 10, 2026)**
+**Arc Institute Virtual Cell Challenge 2026 (VCC 2026)** · **Public Leaderboard #82 (Top 100)** · **Score: 0.1545618019** · *September 10, 2026*
 
-**A simple atlas-based method for perturbation response prediction.**
+This repository presents a simple atlas-transfer approach for predicting single-cell CRISPRi perturbation responses in the [Arc Institute Virtual Cell Challenge 2026 (VCC 2026)](https://virtualcellchallenge.org/). The method transfers perturbation signals across cell atlases by combining measured responses from five public datasets using a weighted ensemble.
 
-This solution predicts single-cell CRISPRi perturbation responses for the [Arc Institute Virtual Cell Challenge 2026 (VCC 2026)](https://virtualcellchallenge.org/) using a weighted combination of measured responses from five public cell atlases.
 
 It combines these responses with target-context controls and a promoter-neighbor correction, then generates integer counts matching mean CPM and pseudobulk profiles.
 
