@@ -1,4 +1,4 @@
-"""AtlasShift: response transfer and integer count generation."""
+"""Atlas response transfer and integer count generation."""
 
 from dataclasses import dataclass
 import hashlib

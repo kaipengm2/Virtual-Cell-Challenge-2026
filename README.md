@@ -1,10 +1,10 @@
-# Virtual Cell Challenge 2026 — AtlasShift
+# Virtual Cell Challenge 2026
 
 **Public Leaderboard Top 100 · Rank #82 · Score 0.1545618019 (September 10, 2026)**
 
-**A simple method for transferring perturbation responses across cell atlases.**
+**A simple atlas-based method for perturbation response prediction.**
 
-AtlasShift predicts single-cell CRISPRi perturbation responses for the [Arc Institute Virtual Cell Challenge 2026 (VCC 2026)](https://virtualcellchallenge.org/) using a weighted combination of measured responses from five public cell atlases.
+This solution predicts single-cell CRISPRi perturbation responses for the [Arc Institute Virtual Cell Challenge 2026 (VCC 2026)](https://virtualcellchallenge.org/) using a weighted combination of measured responses from five public cell atlases.
 
 It combines these responses with target-context controls and a promoter-neighbor correction, then generates integer counts matching mean CPM and pseudobulk profiles.
 

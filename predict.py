@@ -1,4 +1,4 @@
-"""Generate AtlasShift predictions from source statistics and destination controls."""
+"""Generate predictions from source statistics and destination controls."""
 
 import argparse
 from pathlib import Path
