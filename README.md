@@ -1,11 +1,14 @@
 # Virtual Cell Challenge 2026 — AtlasShift
 
-**Public Leaderboard Top 100 · Rank #82 · Score 0.1545618019**  
+**Public Leaderboard Top 100 · Rank #82 · Score 0.1545618019**
+
 Historical result on September 10, 2026; leaderboard ranks change over time.
 
-AtlasShift is a minimal solution for the [Arc Institute Virtual Cell Challenge 2026 (VCC 2026)](https://virtualcellchallenge.org/): zero-shot prediction of single-cell gene expression responses to CRISPRi perturbations across cell contexts.
+**A simple method. No training. CPU inference.**
 
-It transfers measured responses from five public cell atlases, combines them with target-context controls and a promoter-neighbor correction, and generates integer counts matching mean CPM and pseudobulk profiles. CPU inference; no model training.
+AtlasShift predicts single-cell CRISPRi perturbation responses for the [Arc Institute Virtual Cell Challenge 2026 (VCC 2026)](https://virtualcellchallenge.org/) using a weighted combination of measured responses from five public cell atlases.
+
+It combines these responses with target-context controls and a promoter-neighbor correction, then generates integer counts matching mean CPM and pseudobulk profiles.
 
 ```bash
 # Python 3.13; install the official VCC CLI separately
