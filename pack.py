@@ -1,24 +1,18 @@
-"""Run every official prep check using disk-mapped sparse input to bound RAM.
-
-Only loading changes. Validation flags, values, metadata and official prep functions
-are unchanged. This prevents a transient int32-to-int64 index copy above 2^31 nnz.
-Run with the installed vcc-cli interpreter, not the project environment.
-"""
+"""Package counts with the installed VCC CLI, using disk-mapped sparse arrays."""
 
 import argparse
-from dataclasses import asdict
 import hashlib
+import importlib.util
 from importlib.metadata import version
-import json
+import os
 from pathlib import Path
+import shutil
+import sys
 import tempfile
-import time
-
 import anndata as ad
 import h5py
 import numpy as np
 from scipy import sparse
-import vcc.prep as prep
 
 
 def digest(path):
@@ -34,11 +28,11 @@ def mapped_adata(path, temporary):
     obs = backed.obs.copy()
     var = backed.var.copy()
     shape = backed.shape
-    # AnnData 0.12+ may expose its implicit X layer as a None key. Official prep
-    # excludes that key from its droppable-field check for the same reason.
     if backed.raw is not None or any(
-        any(k is not None for k in getattr(backed, key).keys())
-        for key in ["layers", "obsm", "obsp", "varm", "varp", "uns"]
+        (
+            any((k is not None for k in getattr(backed, key).keys()))
+            for key in ["layers", "obsm", "obsp", "varm", "varp", "uns"]
+        )
     ):
         raise ValueError("Mapped validator currently supports only minimal prediction files")
     backed.file.close()
@@ -59,8 +53,8 @@ def mapped_adata(path, temporary):
             array = np.memmap(
                 Path(temporary) / (key + ".bin"), mode="w+", shape=dataset.shape, dtype=dtype
             )
-            for left in range(0, len(dataset), 4_194_304):
-                right = min(left + 4_194_304, len(dataset))
+            for left in range(0, len(dataset), 4194304):
+                right = min(left + 4194304, len(dataset))
                 values = dataset[left:right]
                 if key == "indices" and ((values < 0).any() or (values >= index_bound).any()):
                     raise ValueError("Sparse index outside the declared axis")
@@ -78,67 +72,60 @@ def mapped_adata(path, temporary):
     matrix = constructor(
         (arrays["data"], arrays["indices"], arrays["indptr"]), shape=shape, copy=False
     )
-    if not all(np.shares_memory(getattr(matrix, key), arrays[key]) for key in arrays):
+    if not all((np.shares_memory(getattr(matrix, key), arrays[key]) for key in arrays)):
         raise AssertionError("Sparse constructor unexpectedly copied disk-mapped arrays")
     return ad.AnnData(matrix, obs=obs, var=var)
 
 
 def main():
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("prediction", type=Path)
-    parser.add_argument("--genes", type=Path, required=True)
-    parser.add_argument("--perts", type=Path, required=True)
-    parser.add_argument("--report", type=Path, required=True)
-    parser.add_argument("--scratch-dir", type=Path, required=True)
-    parser.add_argument(
-        "--output", type=Path, help="Write a .vcc archive; omit for validation only"
-    )
+    parser.add_argument("--data-dir", type=Path, default=Path("data"))
+    parser.add_argument("--output", type=Path, default=Path("prediction.vcc"))
+    parser.add_argument("--scratch-dir", type=Path, default=Path("scratch"))
     args = parser.parse_args()
-    start = time.time()
+    if importlib.util.find_spec("vcc") is None:
+        cli = shutil.which("vcc")
+        if not cli:
+            raise SystemExit("Install the official VCC CLI first.")
+        with open(cli, "rb") as handle:
+            interpreter = handle.readline().decode().strip().removeprefix("#!")
+        if (
+            not Path(interpreter).is_file()
+            or Path(interpreter).absolute() == Path(sys.executable).absolute()
+        ):
+            raise SystemExit("Run pack.py with the Python interpreter containing vcc-cli 0.2.0.")
+        os.execv(interpreter, [interpreter, str(Path(__file__).resolve()), *sys.argv[1:]])
+    import vcc.prep as prep
+
     if version("vcc-cli") != "0.2.0":
-        raise ValueError(
-            "This optional adapter is audited for vcc-cli 0.2.0 only; use the standard vcc prep CLI for other versions"
-        )
-    if args.report.exists():
-        raise FileExistsError(args.report)
-    expected = digest(args.prediction)
+        raise SystemExit("This adapter requires vcc-cli 0.2.0; use vcc prep for other versions.")
+    if args.output.exists():
+        raise FileExistsError(args.output)
+    args.output.parent.mkdir(parents=True, exist_ok=True)
     args.scratch_dir.mkdir(parents=True, exist_ok=True)
+    expected = digest(args.prediction)
     original_reader = prep.read_h5ad
-    with tempfile.TemporaryDirectory(prefix="vcc_validate_", dir=args.scratch_dir) as temporary:
+    with tempfile.TemporaryDirectory(prefix="vcc_", dir=args.scratch_dir) as temporary:
 
         def reader(path):
             if Path(path).resolve() != args.prediction.resolve():
-                raise ValueError("Unexpected validation input")
+                raise ValueError("Unexpected prediction input")
             return mapped_adata(path, temporary)
 
         prep.read_h5ad = reader
         try:
-            result = prep.run_prep(
+            prep.run_prep(
                 input_path=str(args.prediction),
-                genes_path=str(args.genes),
-                perts_path=str(args.perts),
-                dry_run=args.output is None,
-                output_path=str(args.output) if args.output else None,
+                output_path=str(args.output),
+                genes_path=str(args.data_dir / "gene_names.csv"),
+                perts_path=str(args.data_dir / "pert_counts.csv"),
             )
         finally:
             prep.read_h5ad = original_reader
     if digest(args.prediction) != expected:
-        raise ValueError("Input changed while validating")
-    official_report = asdict(result)
-    official_report["input"] = args.prediction.name
-    official_report["output"] = args.output.name if args.output else None
-    report = {
-        "official_prep": official_report,
-        "vcc_cli_version": version("vcc-cli"),
-        "prediction_sha256": expected,
-        "reader": "disk-mapped original sparse arrays, values unchanged",
-        "checks": "all official default prep checks, no disabled validation flags",
-        "seconds": time.time() - start,
-        "script_sha256": digest(__file__),
-    }
-    args.report.parent.mkdir(parents=True, exist_ok=True)
-    args.report.write_text(json.dumps(report, indent=2))
-    print(json.dumps(report, indent=2), flush=True)
+        raise ValueError("Prediction changed during packaging")
+    print("Saved " + args.output.name)
 
 
 if __name__ == "__main__":

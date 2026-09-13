@@ -6,8 +6,6 @@ comparisons for 256 sampled rows. The original prediction is never modified.
 """
 
 import argparse
-import hashlib
-import json
 from pathlib import Path
 import tempfile
 import time
@@ -90,14 +88,6 @@ def csc_sample(data, rows, pointers, selected):
             if pos < len(column) and column[pos] == selected[i]:
                 output[i, gene] = data[start + pos]
     return output
-
-
-def digest(path):
-    h = hashlib.sha256()
-    with Path(path).open("rb") as f:
-        for block in iter(lambda: f.read(8 * 1024 * 1024), b""):
-            h.update(block)
-    return h.hexdigest()
 
 
 def main():
@@ -252,21 +242,7 @@ def main():
                         f["X"][key][left : left + 4_194_304], expected[left : left + 4_194_304]
                     )
     pending.rename(args.output)
-    report = {
-        "input": args.input.name,
-        "output": args.output.name,
-        "input_sha256": digest(args.input),
-        "output_sha256": digest(args.output),
-        "shape": [n_rows, n_genes],
-        "nnz": nnz,
-        "verification": f"All stored values reread exactly; all row checksums, sums and nnz match the permutation; {len(selected)} rows compared densely",
-        "permutation": "context, donor-cell-index, target; preserves within-target cell order",
-        "bytes": args.output.stat().st_size,
-        "seconds": time.time() - start,
-        "script_sha256": digest(__file__),
-    }
-    args.output.with_suffix(".repack.json").write_text(json.dumps(report, indent=2))
-    print(json.dumps(report, indent=2), flush=True)
+    print("Saved " + args.output.name)
 
 
 if __name__ == "__main__":
