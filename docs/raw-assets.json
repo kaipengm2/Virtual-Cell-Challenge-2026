@@ -1,0 +1,50 @@
+{
+  "k562": {
+    "filename": "K562_gwps_raw_singlecell_01.h5ad",
+    "url": "https://ndownloader.figshare.com/files/35775507",
+    "bytes": 65830941948,
+    "sha256": "b697ef7fedcec2972ec334608f86f2a29cb25e70c81b6725195f4cda60a9de2c"
+  },
+  "cd4": {
+    "filename": "GWCD4i.DE_stats.h5ad",
+    "url": "https://genome-scale-tcell-perturb-seq.s3.amazonaws.com/marson2025_data/GWCD4i.DE_stats.h5ad",
+    "bytes": 16786240107,
+    "sha256": "c355f535ff32cf7ba1edc49cf9c6039fe84f2c9ebe4d005515cba75790cfbb62"
+  },
+  "gencode47": {
+    "filename": "gencode.v47.annotation.gtf.gz",
+    "url": "https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_47/gencode.v47.annotation.gtf.gz",
+    "bytes": 58953903,
+    "sha256": "df11938c66d2b39f8ebbdb5f1720919321f9cf9d58f02b019753f6a24ca3db24"
+  },
+  "h1-train": {
+    "filename": "adata_Training.h5ad",
+    "url": "https://storage.googleapis.com/arc-institute-virtual-cell-atlas/virtual-cell-challenge/2025/train/adata_Training.h5ad?generation=1765904883947296",
+    "bytes": 15482497461,
+    "sha256": "a09977104fefb622368ca74b50c9d3c1e891733e6c83db07acfca49b0219c02b"
+  },
+  "h1-targets": {
+    "filename": "pert_counts_Training.csv",
+    "url": "https://storage.googleapis.com/arc-institute-virtual-cell-atlas/virtual-cell-challenge/2025/train/pert_counts_Training.csv?generation=1765906581937013",
+    "bytes": 2824,
+    "sha256": "633d202be221418bdbac16efd8cb169666de0ef6469a4e9bfdfb64666ea81a89"
+  },
+  "h1-genes": {
+    "filename": "gene_names.csv",
+    "url": "https://storage.googleapis.com/arc-institute-virtual-cell-atlas/virtual-cell-challenge/2025/gene_names.csv?generation=1765906114880540",
+    "bytes": 116023,
+    "sha256": "e29ff3512b4c2440759bfb2a34577049b2f49df786b3e19c2a91b565de47b38e"
+  },
+  "h1-validation": {
+    "filename": "adata_Validation.h5ad",
+    "url": "https://storage.googleapis.com/arc-institute-virtual-cell-atlas/virtual-cell-challenge/2025/validation/adata_Validation.h5ad?generation=1765905029341737",
+    "bytes": 6928967541,
+    "sha256": "376f0bab27d9f22e00dfd888668d3602006d035edc182721c378f4802c77bfe1"
+  },
+  "h1-test": {
+    "filename": "adata_Test.h5ad",
+    "url": "https://storage.googleapis.com/arc-institute-virtual-cell-atlas/virtual-cell-challenge/2025/test/adata_Test.h5ad?generation=1765905295402700",
+    "bytes": 11950739168,
+    "sha256": "ba5ce66729e4c8e50b6f147c7d73d3f9f28f76c91fa43ff33e3f6bc2ed831f03"
+  }
+}

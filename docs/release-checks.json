@@ -1,0 +1,15 @@
+{
+  "test_suite": {
+    "passed": 22,
+    "failed": 0
+  },
+  "lint": "ruff check and format passed",
+  "installation": "fresh isolated wheel installation and synthetic end-to-end demo passed",
+  "compaction": "synthetic counts and target/context metadata match every original cell",
+  "official_mapped_reader": "CSR and CSC synthetic files exactly match normal reading in installed vcc-cli 0.2.0 environment",
+  "source_preparation": "H1 assembly and full GENCODE promoter extraction checked; K562/X-Atlas/CD4 raw scans not rerun",
+  "ci": "workflow included; remote GitHub Actions not run",
+  "publication": "local artifacts only; no upload or new leaderboard submission",
+  "official_full_validation": "vcc-cli 0.2.0: all default prep checks passed on the full reconstructed CSR prediction through the disk-mapped reader; dry run only",
+  "full_reproduction": "all 2437685571 count values, indices, row pointers, metadata and ten NPZ arrays exactly match the historical v38 prediction"
+}

@@ -1,0 +1,10 @@
+{
+  "build_vcc_refined.py": "ecc4efae65c571c633f601033c067be2a0990a40ed8c8547f59a91676c833403",
+  "direct_transfer.py": "a58c618c1f858d7a15e2c413482c97b2de6d3dc270d36b10ce61c0c05f0a96be",
+  "dual_moment.py": "9c65ecd9b5ca40a9232e66e3e8bf97e42412a37d47e8284184e344e86dee988a",
+  "promoter_prior.py": "3cd86f7ff845c69e841e1339711f155f771fd920d95a0e8281a2d7fee701629c",
+  "source_centered_transfer.py": "41e93639a5ffe9f40d7be71d9db73d8e3dc9197bb121b30eeed0cf5a56ee0c25",
+  "cd4_transfer.py": "bec3c41af3f1b4fa004912e906d999f8fd8f99b6889eff882adece9b3b37d2ac",
+  "dual_moment_balanced.py": "f66fb69fd30eb9017f2aced67e27b4d34261b3880b3e9ff649d92d8cfccb925b",
+  "balanced_rounding.py": "1e2f9e9064b2069a9cd17997f13ebb51e8041c9aced79dbce8a37bc6a6760d36"
+}

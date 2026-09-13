@@ -1,0 +1,69 @@
+{
+  "status": "complete",
+  "shape": [
+    360000,
+    18533
+  ],
+  "nnz": 2437685571,
+  "contexts": [
+    {
+      "context": "A",
+      "nnz": 839297703,
+      "depth_min": 3520,
+      "depth_max": 51349,
+      "max_cpm_l1_after_rounding": 0.006639355962627801
+    },
+    {
+      "context": "B",
+      "nnz": 777158644,
+      "depth_min": 788,
+      "depth_max": 42212,
+      "max_cpm_l1_after_rounding": 0.012731407987525641
+    },
+    {
+      "context": "C",
+      "nnz": 821229224,
+      "depth_min": 3612,
+      "depth_max": 50680,
+      "max_cpm_l1_after_rounding": 0.006414458300020248
+    }
+  ],
+  "seconds": 596.8763282075524,
+  "prediction_sha256": "155e2440aed8add083e2259f288c19e66c77106177d3305235f93c577bc9d51f",
+  "input_sha256": {
+    "K562_GWPS_CPM_full_statistics.npz": "91611d077b0781e1e1149f25694644574c90e3fe36df2b0dd4521eca84e21d58",
+    "HCT116_full_statistics.npz": "ea041c386e28561bd293f9987e6ce8fdcb1bf886c5c8ff0319a3683715c276c2",
+    "HEK293T_full_statistics.npz": "c2b4309663dc845b210984ee1d3a8d73ae64a66b348a1d818c20cc36206b9c05",
+    "H1_2025_full_statistics.npz": "1811338869410f1ac30ac0611d7a422bfaadd58393744942bc771fe3d8ab9c03",
+    "gene_names.csv": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+    "pert_counts.csv": "f57edd7b912ebd718efc7ee9d0f334772513e7cc418d133ce525470e373b3276",
+    "context_A.h5ad": "f22e71968487d3da9402769dcd0c73a47851fad4cd7dd25510283c923031fe3e",
+    "context_B.h5ad": "41557555b3febf6db19fd930b4dd7db88941840077bf985d14dfff959c782380",
+    "context_C.h5ad": "e090e7c7cfdd0006f689214ba38ba0cd2669578e89c9bc325b65f0bd940c02e0",
+    "CD4_DE_statistics.npz": "e5fbf5b27c82b19f13874a85f23dac09bdd884b06b8032ffe2edda33e6d6640c",
+    "official_pairs.csv": "2f4675c03728dea55be924e5a7eb23281a5e53777aa90a048360ef697532538a"
+  },
+  "code_sha256": {
+    "promoter.py": "d412f059375ce45f78ee8c27151945caca4678ac6268fda7c664e77c69b207e9",
+    "cd4.py": "5a2a2a8bcf46faf0f14a53659e6d8d3f790e6b24b071df8315c66b5ad7d85c00",
+    "moments.py": "b2cad7bc16b5a211bdb5c90564c3dab93b09cdd9774682afd54ec7f64de8943e",
+    "io.py": "7285fe0f6ff62ac42d6ab407de905e1d091e43f8610211202cf8f772068ea68a",
+    "rounding.py": "079e03a9268895a42e0c0b4378ad3b3c35e0a6e3bd01de8dec2e798f1232a6ae",
+    "__init__.py": "bc274f6d0d068621ba2c9d14dee071fac09ceb6f8e3d1c949d20dbc394c8617d",
+    "transfer.py": "2c3297f388e494e1c86736e9758599b6da1d2a8562ca6cc4af8ceeabc07977c2",
+    "cli.py": "f59107f5b932823b756a565d0d1b76b58331d77396c626047c66925053a72cb6",
+    "pipeline.py": "1d380ad9a9647e5f44f603e058d9843bcd3d3b1e3f1df24bdb594a119f9314ec",
+    "fusion.py": "7c1d37f82c334dd4285d31b344fb55ca6b52cd713b5a1f5daf55dffd9566922b",
+    "demo.py": "0b5aa98267f63e750c93e0f151265cd7593efd138eb18a248b6ba484ea5806fc"
+  },
+  "python": "3.13.12",
+  "platform": "Darwin",
+  "versions": {
+    "vcc-atlas-transfer": "0.1.0",
+    "numpy": "2.5.2",
+    "scipy": "1.18.1",
+    "pandas": "3.0.5",
+    "anndata": "0.13.3.post0",
+    "h5py": "3.16.0"
+  }
+}

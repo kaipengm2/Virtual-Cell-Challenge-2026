@@ -1,0 +1,31 @@
+{
+  "official_prep": {
+    "input": "prediction.h5ad",
+    "output": null,
+    "n_cells": 360000,
+    "n_genes": 18533,
+    "encoding": 32,
+    "pert_col": "target_gene",
+    "output_pert_col": "target_gene",
+    "celltype_col": null,
+    "normalization": "counts-preserved",
+    "nnz": 2437685571,
+    "context_col": "context",
+    "cells_per_context": {
+      "A": 120000,
+      "B": 120000,
+      "C": 120000
+    },
+    "verified_targets": true,
+    "dropped": [],
+    "reordered_genes": false,
+    "dry_run": true,
+    "notes": []
+  },
+  "vcc_cli_version": "0.2.0",
+  "prediction_sha256": "155e2440aed8add083e2259f288c19e66c77106177d3305235f93c577bc9d51f",
+  "reader": "disk-mapped original sparse arrays, values unchanged",
+  "checks": "all official default prep checks, no disabled validation flags",
+  "seconds": 159.23710894584656,
+  "script_sha256": "eb0c953969279bee9066d8e93c6bc0c73ca79b93a1eca5716d879af30b8571bc"
+}

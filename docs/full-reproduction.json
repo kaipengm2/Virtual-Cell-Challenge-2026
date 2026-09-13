@@ -1,0 +1,102 @@
+{
+  "profile_arrays": {
+    "effects.npz/targets": {
+      "shape": [
+        300
+      ],
+      "exact": true
+    },
+    "effects.npz/genes": {
+      "shape": [
+        18533
+      ],
+      "exact": true
+    },
+    "effects.npz/contexts": {
+      "shape": [
+        3
+      ],
+      "exact": true
+    },
+    "effects.npz/effects": {
+      "shape": [
+        3,
+        300,
+        18533
+      ],
+      "exact": true,
+      "max_absolute_difference": 0.0
+    },
+    "effects.npz/desired_probabilities": {
+      "shape": [
+        3,
+        300,
+        18533
+      ],
+      "exact": true,
+      "max_absolute_difference": 0.0
+    },
+    "effects.npz/source_weight": {
+      "shape": [
+        3,
+        300,
+        18533
+      ],
+      "exact": true,
+      "max_absolute_difference": 0.0
+    },
+    "requested_bulk.npz/targets": {
+      "shape": [
+        300
+      ],
+      "exact": true
+    },
+    "requested_bulk.npz/genes": {
+      "shape": [
+        18533
+      ],
+      "exact": true
+    },
+    "requested_bulk.npz/contexts": {
+      "shape": [
+        3
+      ],
+      "exact": true
+    },
+    "requested_bulk.npz/probabilities": {
+      "shape": [
+        3,
+        300,
+        18533
+      ],
+      "exact": true,
+      "max_absolute_difference": 0.0
+    }
+  },
+  "count_arrays": {
+    "indptr": {
+      "elements": 360001,
+      "different": 0,
+      "exact": true
+    },
+    "indices": {
+      "elements": 2437685571,
+      "different": 0,
+      "exact": true
+    },
+    "data": {
+      "elements": 2437685571,
+      "different": 0,
+      "exact": true
+    }
+  },
+  "shape": [
+    360000,
+    18533
+  ],
+  "metadata_exact": true,
+  "reference_prediction_sha256": "30bb4ca2f02c8f350e4b8efccd2b8f3f12ddc3214e2d8b4144e9fe26d64122a9",
+  "candidate_prediction_sha256": "155e2440aed8add083e2259f288c19e66c77106177d3305235f93c577bc9d51f",
+  "exact": true,
+  "seconds": 85.24629287421703
+}
