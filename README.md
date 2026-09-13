@@ -1,4 +1,4 @@
-# Virtual Cell Challenge 2026
+# VCC 2026: Simple Atlas Transfer
 
 **Public Leaderboard Top 100 · Rank #82 · Score 0.1545618019 (September 10, 2026)**
 
