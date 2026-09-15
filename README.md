@@ -44,3 +44,5 @@ Raw downloads total about 117 GB, plus an X-Atlas scan. URLs and checksums are i
 Inference takes about 10 minutes on the tested machine. Compression and packaging need approximately 39 GB and 29 GB of temporary disk, respectively. `pack.py` uses the installed vcc-cli 0.2.0 with all official checks; use `vcc prep` for other versions.
 
 MIT code license. External data retain their own terms.
+
+If you find this project useful, consider giving it a ⭐!
